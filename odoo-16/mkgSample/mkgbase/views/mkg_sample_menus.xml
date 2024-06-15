@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- Sample Menu -->
+    <menuitem id="mkg_menu_root" name="MKG">
+        <menuitem id="mkg_first_level_1_menu" name="Top Bar Menu 1">
+            <menuitem id="mkg_model_1_menu_action" action="mkg_sample_1_action"/>
+        </menuitem>
+        <menuitem id="mkg_first_level_2_menu" name="Top Bar Menu 2">
+            <menuitem id="mkg_model_2_menu_action" action="mkg_sample_2_action"/>
+            <menuitem id="mkg_model_3_menu_action" action="mkg_sample_3_action"/>
+            <menuitem id="mkg_model_4_menu_action" action="mkg_sample_4_action"/>
+        </menuitem>
+    </menuitem>
+</odoo>

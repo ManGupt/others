@@ -1,0 +1,13 @@
+<odoo>
+    <data>
+        <template id="mkgowl.mkg" name="MKG OWL">
+          <html>
+              <head>
+                  <t t-call-assets="mkgowl.assets_mkg"/>
+              </head>
+              <body>
+              </body>
+          </html>
+        </template>
+    </data>
+</odoo>

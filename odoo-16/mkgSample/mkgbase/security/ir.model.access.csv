@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+mkgbase.access_mkg_sample_1,access_mkg_sample_1,mkgbase.model_mkg_sample,base.group_user,1,1,1,1
+mkgbase.access_mkg_sample_2,access_mkg_sample_2,mkgbase.model_mkg_many2one,base.group_user,1,1,1,1
+mkgbase.access_mkg_sample_3,access_mkg_sample_3,mkgbase.model_mkg_one2many,base.group_user,1,1,1,1
+mkgbase.access_mkg_sample_4,access_mkg_sample_4,mkgbase.model_mkg_many2many,base.group_user,1,1,1,1

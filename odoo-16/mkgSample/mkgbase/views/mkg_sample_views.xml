@@ -1,0 +1,179 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- Sample Search view-->
+    <record id="mkg_sample_view_search" model="ir.ui.view">
+        <field name="name">mkg.sample.search</field>
+        <field name="model">mkg.sample</field>
+        <field name="arch" type="xml">
+            <search string="xyz">
+                <field name="col5" string="Type"/>
+                <field name="readonlytext" string="Text"/>
+                <field name="date" string="Date"/>
+                <group>
+                    <!-- Similar to pre-order form -->
+                    <filter name="see_all" string="See All" domain="['|', ('active', '=', False), ('active', '=', True)]" />
+                </group>
+                <group>
+                    <!-- Similar to pre-order form -->
+                    <filter name="grp" string="Group" context="{'group_by':'col5'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Sample Kanban view-->
+    <record id="mkg_sample_view_kanban" model="ir.ui.view">
+        <field name="name">mkg.sample.kanban</field>
+        <field name="model">mkg.sample</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="col5" records_draggable="false" quick_create="false">
+                <field name="col5"/>
+                <field name="col3"/>
+                <field name="active"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <field name="col1"/><br/>
+                            <field name="many2one_id" options="{'no_create': True, 'no_open': True}"/><br/>
+                            <field name="many2many_ids" widget="many2many_tags"/>
+                            <div t-if="record.col3.raw_value===true">
+                                This is hidden!<br/>
+                                "<t t-out="record.col5.value"/>":
+                                <t t-out="record.active.raw_value"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Sample Form view-->
+    <record id="mkg_sample_view_form" model="ir.ui.view">
+        <field name="name">mkg.sample.form</field>
+        <field name="model">mkg.sample</field>
+        <field name="arch" type="xml">
+            <form string="xyz">
+                <header>
+                    <button name="call_pub_func" type="object" string="Click Me"/>
+                    <field name="col5" colspan="4" options="{'clickable': 'True'}" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group col="4">
+                        <field name="many2one_id" options="{'no_create': True, 'no_open': True}"/>
+                        <field name="many2many_ids" widget="many2many_tags"/>
+                        <field name="m2o"/>
+                    </group>
+                    <group string="grp1">
+                        <field name="col1"/>
+                    </group>
+                    <group string="grp2">
+                        <field name="col2"/>
+                    </group>
+                    <group string="grp3" col="8">
+                        <field name="col3" />
+                    </group>
+                    <notebook>
+                        <page string="tab1">
+                            <group>
+                                <field name="active"/>
+                                <field name="readonlytext"/>
+                            </group>
+                        </page>
+                        <page string="tab2">
+                            <group>
+                                <field name="date"/>
+                                <field name="datetime"/>
+                            </group>
+                        </page>
+                        <page string="tab3">
+                            <field name="one2many_ids" widget="many2many"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Sample List view -->
+    <record id="mkg_sample_view_tree" model="ir.ui.view">
+        <field name="name">mkg.sample.tree</field>
+        <field name="model">mkg.sample</field>
+        <field name="arch" type="xml">
+            <tree string="xyz" decoration-success="active==True" decoration-warning="active==False">
+                <field name="active" invisible='1'/>
+                <field name="col1"/>
+                <field name="col2"/>
+                <field name="col3"/>
+                <field name="col4"/>
+                <field name="col5"/>
+                <field name="readonlytext"/>
+                <field name="date" optional="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Sample Action -->
+    <!-- TODO: How Domain/Context works -->
+    <!--
+        <field name="domain">[('key', '=', val)]</field>
+        <field name="context">{'key': val}</field>
+    -->
+    <record id="mkg_sample_1_action" model="ir.actions.act_window">
+        <field name="name">Action 1</field>
+        <field name="res_model">mkg.sample</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+
+    <record id="mkg_sample_2_action" model="ir.actions.act_window">
+        <field name="name">Action 2</field>
+        <field name="res_model">mkg.many2one</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="mkg_sample_3_action" model="ir.actions.act_window">
+        <field name="name">Action 3</field>
+        <field name="res_model">mkg.one2many</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="mkg_sample_4_action" model="ir.actions.act_window">
+        <field name="name">Action 4</field>
+        <field name="res_model">mkg.many2many</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="mkg_m2o_view_tree" model="ir.ui.view">
+        <field name="name">mkg.many2one.tree</field>
+        <field name="model">mkg.many2one</field>
+        <field name="arch" type="xml">
+            <tree string="xyz">
+                <field name="col1"/>
+                <field name="col2_ids">
+                    <tree>
+                        <field name="col1"/>
+                        <field name="readonlytext"/>
+                    </tree>
+                </field>
+            </tree>
+        </field>
+    </record>
+
+    <record id="mkg_o2m_view_tree" model="ir.ui.view">
+        <field name="name">mkg.one2many.tree</field>
+        <field name="model">mkg.one2many</field>
+        <field name="arch" type="xml">
+            <tree string="xyz">
+                <field name="col1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="mkg_m2m_view_tree" model="ir.ui.view">
+        <field name="name">mkg.many2many.tree</field>
+        <field name="model">mkg.many2many</field>
+        <field name="arch" type="xml">
+            <tree string="xyz">
+                <field name="col1"/>
+            </tree>
+        </field>
+    </record>
+</odoo>
