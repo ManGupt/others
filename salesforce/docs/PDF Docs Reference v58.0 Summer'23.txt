@@ -1,0 +1,11 @@
+apex_ajax.pdf - AJAX Toolkit
+apex_api.pdf - SOAP API
+lightning_developers_guide.pdf - Lightning Aura Components
+salesforce_apex_developer_guide.pdf - Apex Dev
+salesforce_apex_reference_guide.pdf - Apex Ref
+salesforce_packaging_guide.pdf - Independent Software Vendor (ISVForce) Packaging
+salesforce_pages_developers_guide.pdf - Visualforce Dev
+salesforce_soql_sosl.pdf - SF Object Query/Search Language
+sfdx_cli_reference.pdf - SF CLI Ref
+sfdx_dev.pdf - SFDX Dev
+sfdx_setup.pdf - SF CLI Setup
